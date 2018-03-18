@@ -1,4 +1,4 @@
-package alogos;
+package test;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
