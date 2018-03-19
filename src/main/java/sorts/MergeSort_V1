@@ -1,0 +1,80 @@
+//package sorts;
+//
+//import java.util.Arrays;
+//
+///**
+// * Project: algo-test
+// * Package: alogos
+// * <p>
+// * User: vthalapu
+// * Date: 3/18/18
+// * Time: 10:35 AM
+// * <p>
+// * Created with IntelliJ IDEA
+// * To change this template use File | Settings | File Templates.
+// */
+//public class MergeSort_V1 {
+//
+//
+//
+//
+//    static public void main(String... args) {
+//
+////        Integer arr[] = bubbleSort(new Integer[]{8,4,3,49,0,-2,7,3,81,18,10,
+////                20,8,4,3,49,0,-2,7,3,81,18,10,20,8,4,3,49,0,-2,7,3,81,18,10,20,8,4,3,49,0,-2,7,3,81,18,10,20});
+//        Integer arr[] = new Integer[]{8,4,3,49,0};
+//        mergeSort(arr);
+//        System.out.println(Arrays.toString(arr));
+//
+//    }
+//
+//    public static void mergeSort(Integer[]actArray){
+//        mergeSort(actArray, new Integer[actArray.length], 0, actArray.length -1);
+//    }
+//
+//    public static void mergeSort(Integer[]actArray, Integer[]copyTempArray, Integer leftStartIndex, Integer rightEndIndex){
+//        if(leftStartIndex <  rightEndIndex){
+//            Integer middleIndex = (leftStartIndex + rightEndIndex) / 2 ;
+//            mergeSort(actArray,copyTempArray, leftStartIndex, middleIndex );
+//            mergeSort(actArray, copyTempArray,middleIndex + 1, rightEndIndex );
+//            mergeHalves(actArray,copyTempArray,middleIndex, leftStartIndex, rightEndIndex );
+//        }
+//
+//    }
+//
+//    public static void mergeHalves(Integer[]actArray, Integer[]copyTempArray,Integer leftStartIndex
+//            ,Integer middleIndex, Integer rightEndIndex){
+//
+//
+//        // Copy both parts into the copyTempArray array
+//        for (int i = leftStartIndex; i <= rightEndIndex; i++) {
+//            copyTempArray[i] = actArray[i];
+//        }
+//
+//        int i = leftStartIndex;
+//        int j = middleIndex + 1;
+//        int k = leftStartIndex;
+//        // Copy the smallest values from either the left or the right side back
+//        // to the original array
+//        while (i <= middleIndex && j <= rightEndIndex) {
+//            if (copyTempArray[i] <= copyTempArray[j]) {
+//                actArray[k] = copyTempArray[i];
+//                i++;
+//            } else {
+//                actArray[k] = copyTempArray[j];
+//                j++;
+//            }
+//            k++;
+//        }
+//        // Copy the rest of the left side of the array into the target array
+//        while (i <= middleIndex) {
+//            actArray[k] = copyTempArray[i];
+//            k++;
+//            i++;
+//        }
+//        // Since we are sorting in-place any leftover elements from the right side
+//        // are already at the right position.
+//
+//    }
+//
+//}
