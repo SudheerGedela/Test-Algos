@@ -1,6 +1,6 @@
 package sorts;
 
-import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Project: algo-test
@@ -19,12 +19,20 @@ public class MergeSort {
 
         MergeSort mergeSort = new MergeSort();
 
+        int maxArrLength = 100000;
+        int maxRandom = 80000;
 
-        Integer[] actArray = new Integer[]{8, 4, 3, 49, 0, -2, 7, 3, 81, 18, 10, 20, 8, 4, 3, 49, 0
-                , -2, 7, 3, 81, 18, 10, 20, 8, 4, 3, 49, 0, -2, 7, 3, 81, 18, 10, 20, 8, 4, 3, 49, 0, -2, 7, 3, 81, 18, 10, 20};
-//        Integer[] actArray = new Integer[]{8, 4, 3, 49, 0};
+        Integer[] actArray = new Integer[maxArrLength];
+
+        Random random = new Random();
+        for (int i = 0; i < maxArrLength; i++) {
+            actArray[i] = random.nextInt(maxRandom);
+        }
+
+        System.out.println(System.currentTimeMillis());
         mergeSort.mergeSort(actArray);
-        System.out.println(Arrays.toString(actArray));
+        System.out.println(System.currentTimeMillis());
+//        System.out.println(Arrays.toString(actArray));
 
     }
 
