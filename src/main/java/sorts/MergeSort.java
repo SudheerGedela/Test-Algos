@@ -1,5 +1,6 @@
 package sorts;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -19,8 +20,8 @@ public class MergeSort {
 
         MergeSort mergeSort = new MergeSort();
 
-        int maxArrLength = 100000;
-        int maxRandom = 80000;
+        int maxArrLength = 10;
+        int maxRandom = 10;
 
         Integer[] actArray = new Integer[maxArrLength];
 
@@ -31,40 +32,46 @@ public class MergeSort {
 
         System.out.println(System.currentTimeMillis());
         mergeSort.mergeSort(actArray);
+        System.out.println(Arrays.toString(actArray));
+
         System.out.println(System.currentTimeMillis());
-//        System.out.println(Arrays.toString(actArray));
 
     }
 
     public void mergeSort(Integer[] actualArray) {
         Integer[] helper = new Integer[actualArray.length];
         mergeSort(actualArray, helper, 0, actualArray.length - 1);
-
     }
 
     public void mergeSort(Integer[] actualArray, Integer[] helper, int low, int high) {
 
+        int mid;
         if (low < high) {
-            int mid = low + (high - low) / 2;
+            mid = low + (high - low) / 2;
             mergeSort(actualArray, helper, low, mid);
             mergeSort(actualArray, helper, mid + 1, high);
             mergeHalves(actualArray, helper, low, mid, high);
+
         }
+
 
     }
 
-    public void mergeHalves(Integer[] actualArray, Integer[] helper, int low, int mid, int high) {
+    private void mergeHalves(Integer[] actualArray, Integer[] helper, int low, int mid, int high) {
 
-        for (int i = 0; i <= actualArray.length - 1; i++) {
+        //Copy elements to the array
+        for (int i = 0; i < actualArray.length; i++) {
             helper[i] = actualArray[i];
         }
 
-        int i = low;
-        int j = mid + 1;
-        int k = low;
+        //assign halves values
+        int i = low; //left half start index
+        int j = mid + 1; //right half start
+        int k = low; //actual array position , will be shifted when compared
 
+        //Compare two half's i-left, j -right
         while (i <= mid && j <= high) {
-            if (helper[i] <= helper[j]) {
+            if (helper[i] < helper[j]) {
                 actualArray[k] = helper[i];
                 i++;
             } else {
@@ -73,7 +80,8 @@ public class MergeSort {
             }
             k++;
         }
-
+        //Copy back the replaced value from help to the actual array
+        //this is value which got overriden by the comparision
         while (i <= mid) {
             actualArray[k] = helper[i];
             k++;

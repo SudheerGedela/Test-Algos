@@ -18,9 +18,9 @@ public class RegExTest {
 
     static public void main(String... args) {
 
-        String testString = "Hello Vamsi Usha's Husband";
+        String testString = "Hello Vamsi Usha's Husband Vamsi";
 
-        Pattern pattern = Pattern.compile("^H");
+        Pattern pattern = Pattern.compile("Vamsi?");
 
         Matcher matcher = pattern.matcher(testString);
 
