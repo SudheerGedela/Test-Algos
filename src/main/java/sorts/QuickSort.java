@@ -22,8 +22,11 @@ public class QuickSort {
 
         QuickSort quickSort = new QuickSort();
 
-        int maxArrLength = 10000000;
-        int maxRandom = 10000000;
+        int maxArrLength = 20;
+        int maxRandom = 20;
+
+//        int maxArrLength = 10000000;
+//        int maxRandom = 10000000;
 
         quickSort.actualArray = new Integer[maxArrLength];
         Random random = new Random();
@@ -51,6 +54,10 @@ public class QuickSort {
 
 
     public void quickSort() {
+        // check for empty or null array
+        if (actualArray == null || actualArray.length == 0) {
+            return;
+        }
         quickSort(0, actualArray.length - 1);
     }
 
@@ -58,15 +65,15 @@ public class QuickSort {
         int i = low;
         int j = high;
 
-        int pivot = (low + high) / 2;
+        int pivot = actualArray[(low + high) / 2];
 
         while (i <= j) {
 
-            while (actualArray[i] < actualArray[pivot]) {
+            while (actualArray[i] < pivot) {
                 i++;
             }
 
-            while (actualArray[j] > actualArray[pivot]) {
+            while (actualArray[j] > pivot) {
                 j--;
             }
 
