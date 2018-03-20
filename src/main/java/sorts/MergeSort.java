@@ -20,8 +20,8 @@ public class MergeSort {
 
         MergeSort mergeSort = new MergeSort();
 
-        int maxArrLength = 10;
-        int maxRandom = 10;
+        int maxArrLength = 100000;
+        int maxRandom = 100000;
 
         Integer[] actArray = new Integer[maxArrLength];
 
@@ -29,12 +29,13 @@ public class MergeSort {
         for (int i = 0; i < maxArrLength; i++) {
             actArray[i] = random.nextInt(maxRandom);
         }
-
-        System.out.println(System.currentTimeMillis());
+        long start = System.currentTimeMillis();
+        System.out.println(start);
         mergeSort.mergeSort(actArray);
         System.out.println(Arrays.toString(actArray));
-
-        System.out.println(System.currentTimeMillis());
+        long end = System.currentTimeMillis();
+        System.out.println(end);
+        System.out.println("Total seconds ->" + (end - start) / 1000);
 
     }
 
