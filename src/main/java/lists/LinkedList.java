@@ -13,60 +13,88 @@ package lists;
  */
 class Node {
     Node next;
-    int data;
+    Integer data;
 
     Node(Integer data) {
         this.data = data;
     }
 }
 
-
-public class LinkedList {
+class LinkedList {
     Node head;
 
-    public void addNode(Integer data) {
-        Node current;
+    public static void printlInkedList(LinkedList linkedListPrint) throws CloneNotSupportedException {
+        LinkedList linkedList = new LinkedList();
+        linkedList.head = linkedListPrint.head;
+        while (linkedList.head != null) {
+            System.out.print(linkedList.head.data + "->");
+            linkedList.head = linkedList.head.next;
+        }
+        System.out.println();
+    }
+
+    static public void main(String... args) throws CloneNotSupportedException {
+        //LinkedList
+        System.out.println("**************************************************");
+        System.out.println("Linked List");
+        LinkedList linkedList = new LinkedList();
+        linkedList.append(1);
+        linkedList.append(1);
+        linkedList.append(2);
+        linkedList.append(3);
+        LinkedList.printlInkedList(linkedList);
+
+        linkedList.prependNode(45);
+        LinkedList.printlInkedList(linkedList);
+
+        linkedList.deleteNode(45);
+        LinkedList.printlInkedList(linkedList);
+
+        linkedList.append(45);
+        LinkedList.printlInkedList(linkedList);
+
+        linkedList.deleteNode(2);
+        LinkedList.printlInkedList(linkedList);
+    }
+
+    public void append(Integer data) {
         if (head == null) {
             head = new Node(data);
             return;
         }
-        current = head;
+
+        Node current = head;
 
         while (current.next != null) {
             current = current.next;
         }
-
         current.next = new Node(data);
+
     }
 
     public void prependNode(Integer data) {
-        Node newHead = new Node(data);
-        newHead.next = head;
-        head = newHead;
+        Node temp = head;
+        head = new Node(data);
+        head.next = temp;
     }
 
     public void deleteNode(Integer data) {
-        Node current;
-
-        if (head == null) return;
-
-
-        current = head;
-
         if (head.data == data) {
             head = head.next;
             return;
         }
 
+        Node current = head;
+
         while (current.next != null) {
             if (current.next.data == data) {
                 current.next = current.next.next;
-                return;
             }
             current = current.next;
         }
+
     }
 
-}
 
+}
 
