@@ -66,25 +66,21 @@ class AllParc2 {
     }
 }
 
-
 class BubbleSort implements Sort {
-
     @Override
     public Integer[] sort(Integer[] allSorts) {
-        Integer temp;
-        for (Integer i = allSorts.length - 1; i >= 0; i--) {
-            for (Integer j = 0; j < i; j++) {
+
+        for (int i = allSorts.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
                 if (allSorts[j] > allSorts[j + 1]) {
-                    temp = allSorts[j];
+                    int temp = allSorts[j];
                     allSorts[j] = allSorts[j + 1];
                     allSorts[j + 1] = temp;
                 }
             }
         }
-
         return allSorts;
     }
-
 
 }
 
@@ -93,31 +89,29 @@ class MergeSort implements Sort {
 
     @Override
     public Integer[] sort(Integer[] allSorts) {
-        Integer[] helper = new Integer[allSorts.length];
-        sort(allSorts, helper, 0, allSorts.length - 1);
+        sort(allSorts, new Integer[allSorts.length], 0, allSorts.length - 1);
         return allSorts;
     }
 
 
-    private void sort(Integer[] allSorts, Integer[] helper, Integer low, Integer high) {
-        Integer mid;
+    public void sort(Integer[] allSorts, Integer[] helper, int low, int high) {
+
         if (low < high) {
-            mid = (low + high) / 2;
+            int mid = (low + high) / 2;
             sort(allSorts, helper, low, mid);
             sort(allSorts, helper, mid + 1, high);
-            mergerHalves(allSorts, helper, low, mid, high);
+            mergeHalves(allSorts, helper, low, mid, high);
         }
     }
 
-    private void mergerHalves(Integer[] allSorts, Integer[] helper, Integer low, Integer mid, Integer high) {
-
-        for (Integer i = 0; i < allSorts.length; i++) {
+    public void mergeHalves(Integer[] allSorts, Integer[] helper, int low, int mid, int high) {
+        for (int i = 0; i < allSorts.length; i++) {
             helper[i] = allSorts[i];
         }
 
-        Integer i = low;
-        Integer j = mid + 1;
-        Integer k = low;
+        int i = low;
+        int j = mid + 1;
+        int k = low;
 
         while (i <= mid && j <= high) {
 
@@ -136,8 +130,8 @@ class MergeSort implements Sort {
             i++;
             k++;
         }
-
     }
+
 }
 
 class QuickSort implements Sort {
@@ -148,16 +142,15 @@ class QuickSort implements Sort {
         return allSorts;
     }
 
-    private void sort(Integer[] allSorts, Integer low, Integer high) {
-        Integer pivot = allSorts[(low + high) / 2];
-        Integer i = low;
-        Integer j = high;
-
+    public void sort(Integer[] allSorts, int low, int high) {
+        int i = low, j = high;
+        int pivot = allSorts[(low + high) / 2];
         while (i <= j) {
 
             while (allSorts[i] < pivot) {
                 i++;
             }
+
             while (allSorts[j] > pivot) {
                 j--;
             }
@@ -167,20 +160,19 @@ class QuickSort implements Sort {
                 i++;
                 j--;
             }
-
         }
 
-        if (j > low)
+        if (low < j)
             sort(allSorts, low, j);
+
         if (i < high)
             sort(allSorts, i, high);
 
     }
 
-    private void exchange(Integer[] allSorts, Integer i, Integer j) {
-        Integer temp = allSorts[i];
+    public void exchange(Integer[] allSorts, int i, int j) {
+        int temp = allSorts[i];
         allSorts[i] = allSorts[j];
         allSorts[j] = temp;
     }
-
 }
