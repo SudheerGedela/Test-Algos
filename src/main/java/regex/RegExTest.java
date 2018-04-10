@@ -26,9 +26,9 @@ public class RegExTest {
 
 
         while (matcher.find()) {
-            System.out.println(matcher.start());
-            System.out.println(matcher.end());
-            System.out.println(matcher.group());
+            System.out.println("Start -> " + matcher.start());
+            System.out.println("End -> " + matcher.end());
+            System.out.println("Group -> " + matcher.group());
         }
 
 
