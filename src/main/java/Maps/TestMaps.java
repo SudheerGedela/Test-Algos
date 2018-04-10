@@ -23,12 +23,22 @@ public class TestMaps {
         map.put("k1", "value1");
         map.put("k2", "value2");
         map.put("k3", "value3");
+        map.put("k3", "value3");
         map.put("k4", "value4");
+        System.out.println("**********************************************");
+        for (Map.Entry<String, String> set : map.entrySet()) {
+            System.out.println(set.getKey());
+            System.out.println(set.getValue());
+            System.out.println(set.hashCode());
+        }
 
+        System.out.println("**********************************************");
         System.out.println(map.values());
+        System.out.println(map.keySet().toString());
         Set<Map.Entry<String, String>> set = map.entrySet();
-
+        System.out.println("**********************************************");
         set.forEach(e -> {
+
             System.out.println("Key ->> " + e.getKey());
             System.out.println("Value ->> " + e.getValue());
             System.out.println("HashCode ->> " + e.hashCode());
