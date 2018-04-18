@@ -27,18 +27,18 @@ class AllParc2 {
         actualArray = SortUtils.getRandomUnSortedArray(100, 100);
         SortUtils.sortAndLogTime(new BubbleSort(), actualArray);
 
-        //Merge
-        System.out.println("**************************************************");
-        System.out.println("Merge Sort");
-        actualArray = SortUtils.getRandomUnSortedArray(100, 100);
-        SortUtils.sortAndLogTime(new MergeSort(), actualArray);
-
-
-        //Quick
-        System.out.println("**************************************************");
-        System.out.println("Quick Sort");
-        actualArray = SortUtils.getRandomUnSortedArray(100, 100);
-        SortUtils.sortAndLogTime(new QuickSort(), actualArray);
+//        //Merge
+//        System.out.println("**************************************************");
+//        System.out.println("Merge Sort");
+//        actualArray = SortUtils.getRandomUnSortedArray(100, 100);
+//        SortUtils.sortAndLogTime(new MergeSort(), actualArray);
+//
+//
+//        //Quick
+//        System.out.println("**************************************************");
+//        System.out.println("Quick Sort");
+//        actualArray = SortUtils.getRandomUnSortedArray(100, 100);
+//        SortUtils.sortAndLogTime(new QuickSort(), actualArray);
 
 //        //LinkedList
 //        System.out.println("**************************************************");
@@ -66,113 +66,34 @@ class AllParc2 {
     }
 }
 
-class BubbleSort implements Sort {
+class BubbleSort implements Sort{
+
     @Override
     public Integer[] sort(Integer[] allSorts) {
 
-        for (int i = allSorts.length - 1; i >= 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (allSorts[j] > allSorts[j + 1]) {
+        for(int i = allSorts.length-1 ; i >= 0; i-- ){
+            for(int j =0 ; j < i ; j++){
+                if(allSorts[j] > allSorts[j+1]){
                     int temp = allSorts[j];
-                    allSorts[j] = allSorts[j + 1];
-                    allSorts[j + 1] = temp;
+                    allSorts[j] = allSorts[j+1];
+                    allSorts[j+1] = temp;
                 }
             }
         }
+
+
         return allSorts;
     }
-
 }
 
-
-class MergeSort implements Sort {
-
-    @Override
-    public Integer[] sort(Integer[] allSorts) {
-        sort(allSorts, new Integer[allSorts.length], 0, allSorts.length - 1);
-        return allSorts;
-    }
-
-
-    public void sort(Integer[] allSorts, Integer[] helper, int low, int high) {
-
-        if (low < high) {
-            int mid = (low + high) / 2;
-            sort(allSorts, helper, low, mid);
-            sort(allSorts, helper, mid + 1, high);
-            mergeHalves(allSorts, helper, low, mid, high);
-        }
-    }
-
-    public void mergeHalves(Integer[] allSorts, Integer[] helper, int low, int mid, int high) {
-        for (int i = 0; i < allSorts.length; i++) {
-            helper[i] = allSorts[i];
-        }
-
-        int i = low;
-        int j = mid + 1;
-        int k = low;
-
-        while (i <= mid && j <= high) {
-
-            if (helper[i] < helper[j]) {
-                allSorts[k] = helper[i];
-                i++;
-            } else {
-                allSorts[k] = helper[j];
-                j++;
-            }
-            k++;
-        }
-
-        while (i <= mid) {
-            allSorts[k] = helper[i];
-            i++;
-            k++;
-        }
-    }
-
-}
-
-class QuickSort implements Sort {
-
-    @Override
-    public Integer[] sort(Integer[] allSorts) {
-        sort(allSorts, 0, allSorts.length - 1);
-        return allSorts;
-    }
-
-    public void sort(Integer[] allSorts, int low, int high) {
-        int i = low, j = high;
-        int pivot = allSorts[(low + high) / 2];
-        while (i <= j) {
-
-            while (allSorts[i] < pivot) {
-                i++;
-            }
-
-            while (allSorts[j] > pivot) {
-                j--;
-            }
-
-            if (i <= j) {
-                exchange(allSorts, i, j);
-                i++;
-                j--;
-            }
-        }
-
-        if (low < j)
-            sort(allSorts, low, j);
-
-        if (i < high)
-            sort(allSorts, i, high);
-
-    }
-
-    public void exchange(Integer[] allSorts, int i, int j) {
-        int temp = allSorts[i];
-        allSorts[i] = allSorts[j];
-        allSorts[j] = temp;
-    }
-}
+//class MergeSort implements  Sort {
+//
+//    @Override
+//    public Integer[] sort(Integer[] allSorts) {
+//    }
+//
+//    public Integer[] sort(Integer[] allSorts) {
+//
+//    }
+//
+//}
