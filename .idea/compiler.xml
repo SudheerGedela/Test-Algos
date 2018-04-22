@@ -9,8 +9,5 @@
         <module name="algo-test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="algo-test" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
