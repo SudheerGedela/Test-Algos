@@ -66,24 +66,25 @@ class AllParc2 {
     }
 }
 
-class BubbleSort implements Sort {
+class BubbleSort implements Sort{
+
     @Override
     public Integer[] sort(Integer[] allSorts) {
 
-        for (int i = allSorts.length - 1; i >= 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (allSorts[j] > allSorts[j + 1]) {
+        for(int i = allSorts.length-1 ; i >= 0; i-- ){
+            for(int j =0 ; j < i ; j++){
+                if(allSorts[j] > allSorts[j+1]){
                     int temp = allSorts[j];
-                    allSorts[j] = allSorts[j + 1];
-                    allSorts[j + 1] = temp;
+                    allSorts[j] = allSorts[j+1];
+                    allSorts[j+1] = temp;
                 }
             }
         }
+
+
         return allSorts;
     }
-
 }
-
 
 class MergeSort implements Sort {
 
@@ -93,11 +94,10 @@ class MergeSort implements Sort {
         return allSorts;
     }
 
-
     public void sort(Integer[] allSorts, Integer[] helper, int low, int high) {
-
+        int mid;
         if (low < high) {
-            int mid = (low + high) / 2;
+            mid = (low + high) / 2;
             sort(allSorts, helper, low, mid);
             sort(allSorts, helper, mid + 1, high);
             mergeHalves(allSorts, helper, low, mid, high);
@@ -114,7 +114,6 @@ class MergeSort implements Sort {
         int k = low;
 
         while (i <= mid && j <= high) {
-
             if (helper[i] < helper[j]) {
                 allSorts[k] = helper[i];
                 i++;
@@ -145,8 +144,8 @@ class QuickSort implements Sort {
     public void sort(Integer[] allSorts, int low, int high) {
         int i = low, j = high;
         int pivot = allSorts[(low + high) / 2];
-        while (i <= j) {
 
+        while (i <= j) {
             while (allSorts[i] < pivot) {
                 i++;
             }
@@ -160,11 +159,11 @@ class QuickSort implements Sort {
                 i++;
                 j--;
             }
+
         }
 
         if (low < j)
             sort(allSorts, low, j);
-
         if (i < high)
             sort(allSorts, i, high);
 
