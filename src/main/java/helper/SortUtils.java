@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: helper
  * <p>
  * User: vthalapu

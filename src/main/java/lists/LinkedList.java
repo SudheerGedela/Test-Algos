@@ -1,7 +1,7 @@
 package lists;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: lists
  * <p>
  * User: vthalapu

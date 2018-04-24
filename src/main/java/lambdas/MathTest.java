@@ -1,10 +1,10 @@
-package test;
+package lambdas;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: alogos
  * <p>
  * User: vthalapu

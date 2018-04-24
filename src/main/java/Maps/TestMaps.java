@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: Maps
  * <p>
  * User: vthalapu

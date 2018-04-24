@@ -3,7 +3,7 @@ package math;
 import java.util.Arrays;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: math
  * <p>
  * User: vthalapu

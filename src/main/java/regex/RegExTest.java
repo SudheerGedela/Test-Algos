@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: regex
  * <p>
  * User: vthalapu

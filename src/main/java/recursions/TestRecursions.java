@@ -1,7 +1,7 @@
 package recursions;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: recursions
  * <p>
  * User: vthalapu

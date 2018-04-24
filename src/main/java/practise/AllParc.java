@@ -3,7 +3,7 @@ package practise;
 import helper.SortUtils;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: practise
  * <p>
  * User: vthalapu

@@ -17,7 +17,7 @@ enum StringEnum {
 }
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: enumaration
  * <p>
  * User: vamshi

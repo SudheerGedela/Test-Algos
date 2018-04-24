@@ -1,11 +1,11 @@
-package test;
+package lambdas;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: alogos
  * <p>
  * User: vthalapu

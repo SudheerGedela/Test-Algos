@@ -3,7 +3,7 @@ package sorts;
 import java.util.Arrays;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: sorts
  * <p>
  * User: vthalapu

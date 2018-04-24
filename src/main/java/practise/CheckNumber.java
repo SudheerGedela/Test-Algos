@@ -3,7 +3,7 @@
 //import org.apache.commons.lang3.StringUtils;
 //
 ///**
-// * Project: algo-test
+// * Project: algo-lambdas
 // * Package: practise
 // * <p>
 // * User: vthalapu

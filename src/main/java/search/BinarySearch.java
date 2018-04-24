@@ -3,7 +3,7 @@ package search;
 import static sorts.BubbleSort.bubbleSort;
 
 /**
- * Project: algo-test
+ * Project: algo-lambdas
  * Package: search
  * <p>
  * User: vthalapu
