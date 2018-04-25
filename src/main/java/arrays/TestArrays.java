@@ -18,7 +18,7 @@ public class TestArrays {
         Integer[] array = new Integer[]{1, 2, 3, 4};
         Integer[] arrayDup = new Integer[]{5, 6, 7, 8};
 
-        System.arraycopy(array, 0, arrayDup, 0, array.length);
+        System.arraycopy(array, 1, arrayDup, 1, array.length - 1);
 
         System.out.println(Arrays.toString(arrayDup));
 

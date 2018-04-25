@@ -29,7 +29,7 @@ public class BinarySearch {
     public static boolean binarySearch(Integer[] sortedArray, int elementToFind) {
 
         int lowIndex = 0;
-        int highIndex = sortedArray.length;
+        int highIndex = sortedArray.length - 1;
 
         int middleIndex;
 

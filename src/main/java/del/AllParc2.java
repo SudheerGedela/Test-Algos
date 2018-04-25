@@ -15,7 +15,7 @@ import practise.Sort;
  * To change this template use File | Settings | File Templates.
  */
 class AllParc2 {
-    static public void main(String... args) throws CloneNotSupportedException {
+    static public void main(String... args) {
 
 //        AllParc allParc = new AllParc();
 
@@ -40,51 +40,62 @@ class AllParc2 {
         actualArray = SortUtils.getRandomUnSortedArray(100, 100);
         SortUtils.sortAndLogTime(new QuickSort(), actualArray);
 
-//        //LinkedList
-//        System.out.println("**************************************************");
-//        System.out.println("Linked List");
-//        LinkedList linkedList = new LinkedList();
-//        linkedList.append(1);
-//        linkedList.append(1);
-//        linkedList.append(2);
-//        linkedList.append(3);
-//        LinkedList.printlInkedList(linkedList);
-//
-//        linkedList.prependNode(45);
-//        LinkedList.printlInkedList(linkedList);
-//
-//        linkedList.deleteNode(45);
-//        LinkedList.printlInkedList(linkedList);
-//
-//        linkedList.append(45);
-//        LinkedList.printlInkedList(linkedList);
-//
-//        linkedList.deleteNode(2);
-//        LinkedList.printlInkedList(linkedList);
+        //LinkedList
+        System.out.println("**************************************************");
+        System.out.println("Linked List");
+        LinkedList linkedList = new LinkedList();
+        linkedList.addNode(1);
+        linkedList.addNode(1);
+        linkedList.addNode(2);
+        linkedList.addNode(3);
+        LinkedList.printLinkedListData(linkedList);
+
+        linkedList.prependNode(45);
+        LinkedList.printLinkedListData(linkedList);
+
+        linkedList.deleteNode(45);
+        LinkedList.printLinkedListData(linkedList);
+
+        linkedList.addNode(45);
+        LinkedList.printLinkedListData(linkedList);
+
+        linkedList.deleteNode(2);
+        LinkedList.printLinkedListData(linkedList);
+
+
+        //Factorial
+        System.out.println("**************************************************");
+        System.out.println("Factorial");
+        Factorial factorial = new Factorial();
+        System.out.println(factorial.getFactorial(4));
+
+        //Fib
+        Fibanacii fibanacii = new Fibanacii();
+        System.out.println(fibanacii.fib(5));
 
 
     }
 }
 
-class BubbleSort implements Sort{
+class BubbleSort implements Sort {
 
     @Override
     public Integer[] sort(Integer[] allSorts) {
 
-        for(int i = allSorts.length-1 ; i >= 0; i-- ){
-            for(int j =0 ; j < i ; j++){
-                if(allSorts[j] > allSorts[j+1]){
+        for (int i = allSorts.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (allSorts[j] > allSorts[j + 1]) {
                     int temp = allSorts[j];
-                    allSorts[j] = allSorts[j+1];
-                    allSorts[j+1] = temp;
+                    allSorts[j] = allSorts[j + 1];
+                    allSorts[j + 1] = temp;
                 }
             }
         }
 
-
         return allSorts;
     }
 }
+
 
 class MergeSort implements Sort {
 
@@ -95,9 +106,8 @@ class MergeSort implements Sort {
     }
 
     public void sort(Integer[] allSorts, Integer[] helper, int low, int high) {
-        int mid;
         if (low < high) {
-            mid = (low + high) / 2;
+            int mid = (low + high) / 2;
             sort(allSorts, helper, low, mid);
             sort(allSorts, helper, mid + 1, high);
             mergeHalves(allSorts, helper, low, mid, high);
@@ -112,6 +122,7 @@ class MergeSort implements Sort {
         int i = low;
         int j = mid + 1;
         int k = low;
+
 
         while (i <= mid && j <= high) {
             if (helper[i] < helper[j]) {
@@ -129,9 +140,11 @@ class MergeSort implements Sort {
             i++;
             k++;
         }
+
     }
 
 }
+
 
 class QuickSort implements Sort {
 
@@ -142,10 +155,14 @@ class QuickSort implements Sort {
     }
 
     public void sort(Integer[] allSorts, int low, int high) {
-        int i = low, j = high;
+        int i = low;
+        int j = high;
         int pivot = allSorts[(low + high) / 2];
 
+
         while (i <= j) {
+
+
             while (allSorts[i] < pivot) {
                 i++;
             }
@@ -164,14 +181,105 @@ class QuickSort implements Sort {
 
         if (low < j)
             sort(allSorts, low, j);
+
         if (i < high)
             sort(allSorts, i, high);
 
+
     }
 
-    public void exchange(Integer[] allSorts, int i, int j) {
+    private void exchange(Integer[] allSorts, int i, int j) {
         int temp = allSorts[i];
         allSorts[i] = allSorts[j];
         allSorts[j] = temp;
     }
+
+
+}
+
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+
+class LinkedList {
+
+    Node head;
+
+
+    static public void printLinkedListData(LinkedList linkedListTemp) {
+        LinkedList linkedList = new LinkedList();
+        linkedList.head = linkedListTemp.head;
+        while (linkedList.head != null) {
+            System.out.print(linkedList.head.data + "->");
+            linkedList.head = linkedList.head.next;
+        }
+        System.out.println();
+    }
+
+
+    //try
+    public void addNode(int data) {
+        if (head == null) {
+            head = new Node(data);
+            return;
+        }
+
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = new Node(data);
+    }
+
+    public void prependNode(int data) {
+        Node temp = head;
+        head = new Node(data);
+        head.next = temp;
+    }
+
+    public void deleteNode(int data) {
+
+        if (head.data == data) {
+            head = head.next;
+            return;
+        }
+
+        Node current = head;
+
+        while (current.next != null) {
+            if (current.next.data == data) {
+                current.next = current.next.next;
+            }
+            current = current.next;
+        }
+
+
+    }
+
+}
+
+class Factorial {
+    public int getFactorial(int i) {
+        if (i == 0 || i == 1)
+            return 1;
+        else
+            return getFactorial(i - 1) * i;
+    }
+}
+
+class Fibanacii {
+
+    public int fib(int n) {
+        if (n <= 1)
+            return n;
+        return fib(n - 1) + fib(n - 2);
+    }
+
+
 }
