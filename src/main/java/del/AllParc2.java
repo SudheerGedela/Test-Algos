@@ -67,7 +67,7 @@ class AllParc2 {
         System.out.println("**************************************************");
         System.out.println("Factorial");
         Factorial factorial = new Factorial();
-        System.out.println(factorial.getFactorial(4));
+        System.out.println(factorial.getFactorial(6));
 
         //Fib
         Fibanacii fibanacii = new Fibanacii();
@@ -269,7 +269,7 @@ class Factorial {
         if (i == 0 || i == 1)
             return 1;
         else
-            return getFactorial(i - 1) * i;
+            return i * getFactorial(i - 1);
     }
 }
 

@@ -23,10 +23,14 @@ public class IterateSets {
         testSet.add("3");
 
         System.out.println(Arrays.toString(testSet.toArray()));
-
         testSet.forEach(sItem -> System.out.println(sItem));
 
 
+        System.out.println("hello");
+        testSet
+                .stream()
+                .filter(e -> e.contains("1"))
+                .forEach(System.out::print);
 
 
 

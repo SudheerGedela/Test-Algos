@@ -11,8 +11,8 @@ package generics;
  * Created with IntelliJ IDEA
  * To change this template use File | Settings | File Templates.
  */
-public class TestGenerics {
-
+public class TestGenerics<T> {
+    private T t;
     public static void main(String... args) {
         System.out.println(new TestGenerics().testingGenerics(10));
         System.out.println(new TestGenerics().testingGenerics("Hello Vamsi"));
@@ -21,10 +21,10 @@ public class TestGenerics {
 
     }
 
-    //wrong
-//    public void testGen1(<T> t){
-//
-//    }
+    //    wrong
+    public void testGen1(T t) {
+        this.t = t;
+    }
 
     public <T> T testGen() {
         return null;

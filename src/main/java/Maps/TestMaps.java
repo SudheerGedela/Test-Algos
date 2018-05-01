@@ -3,6 +3,7 @@ package Maps;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * Project: algo-lambdas
@@ -25,6 +26,11 @@ public class TestMaps {
         map.put("k3", "value3");
         map.put("k3", "value3");
         map.put("k4", "value4");
+
+
+        System.out.println(map.keySet().toArray());
+
+
         System.out.println("**********************************************");
         for (Map.Entry<String, String> set : map.entrySet()) {
             System.out.println(set.getKey());
@@ -43,6 +49,20 @@ public class TestMaps {
             System.out.println("Value ->> " + e.getValue());
             System.out.println("HashCode ->> " + e.hashCode());
         });
+
+
+        System.out.println("*****************************************");
+        TestMaps.aTreeMap();
+    }
+
+    static private void aTreeMap() {
+        Map<String, String> objMap = new TreeMap<>();
+        objMap.put("b", "cs");
+        objMap.put("a", "as");
+
+        for (String key : objMap.keySet()) {
+            System.out.println("Key : " + key + " , Value : " + objMap.get(key));
+        }
 
     }
 

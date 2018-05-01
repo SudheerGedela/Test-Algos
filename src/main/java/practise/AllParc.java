@@ -14,11 +14,9 @@ import helper.SortUtils;
  * To change this template use File | Settings | File Templates.
  */
 public class AllParc {
+    static public void main(String... args) {
 
-
-    static public void main(String... args) throws CloneNotSupportedException {
-
-        AllParc allParc = new AllParc();
+//        AllParc allParc = new AllParc();
 
         Integer[] actualArray;
 
@@ -45,47 +43,51 @@ public class AllParc {
         System.out.println("**************************************************");
         System.out.println("Linked List");
         LinkedList linkedList = new LinkedList();
-        linkedList.append(1);
-        linkedList.append(1);
-        linkedList.append(2);
-        linkedList.append(3);
-        LinkedList.printlInkedList(linkedList);
+        linkedList.addNode(1);
+        linkedList.addNode(1);
+        linkedList.addNode(2);
+        linkedList.addNode(3);
+        LinkedList.printLinkedListData(linkedList);
 
         linkedList.prependNode(45);
-        LinkedList.printlInkedList(linkedList);
+        LinkedList.printLinkedListData(linkedList);
 
         linkedList.deleteNode(45);
-        LinkedList.printlInkedList(linkedList);
+        LinkedList.printLinkedListData(linkedList);
 
-        linkedList.append(45);
-        LinkedList.printlInkedList(linkedList);
+        linkedList.addNode(45);
+        LinkedList.printLinkedListData(linkedList);
 
         linkedList.deleteNode(2);
-        LinkedList.printlInkedList(linkedList);
+        LinkedList.printLinkedListData(linkedList);
 
+
+        //Factorial
+        System.out.println("**************************************************");
+        System.out.println("Factorial");
+        Factorial factorial = new Factorial();
+        System.out.println(factorial.getFactorial(6));
+
+        //Fib
+        Fibanacii fibanacii = new Fibanacii();
+        System.out.println(fibanacii.fib(5));
 
 
     }
-
 }
 
 class BubbleSort implements Sort {
 
-
     @Override
     public Integer[] sort(Integer[] allSorts) {
-        int i;
-        int j;
-        int temp;
 
-        for (i = allSorts.length - 1; i >= 0; i--) {
-            for (j = 0; j < i; j++) {
+        for (int i = allSorts.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
                 if (allSorts[j] > allSorts[j + 1]) {
-                    temp = allSorts[j];
+                    int temp = allSorts[j];
                     allSorts[j] = allSorts[j + 1];
                     allSorts[j + 1] = temp;
                 }
-
             }
         }
 
@@ -93,39 +95,35 @@ class BubbleSort implements Sort {
     }
 }
 
-class MergeSort implements Sort {
 
+class MergeSort implements Sort {
 
     @Override
     public Integer[] sort(Integer[] allSorts) {
-        Integer[] helper = new Integer[allSorts.length];
-        sort(allSorts, helper, 0, allSorts.length - 1);
+        sort(allSorts, new Integer[allSorts.length], 0, allSorts.length - 1);
         return allSorts;
     }
 
-
-    public void sort(Integer[] allSorts, Integer[] helper, Integer low, Integer high) {
-        int mid;
+    public void sort(Integer[] allSorts, Integer[] helper, int low, int high) {
         if (low < high) {
-            mid = (low + high) / 2;
+            int mid = (low + high) / 2;
             sort(allSorts, helper, low, mid);
             sort(allSorts, helper, mid + 1, high);
             mergeHalves(allSorts, helper, low, mid, high);
         }
-
     }
 
-    public void mergeHalves(Integer[] allSorts, Integer[] helper, Integer low, Integer mid, Integer high) {
-        for (Integer i = 0; i < allSorts.length; i++) {
+    public void mergeHalves(Integer[] allSorts, Integer[] helper, int low, int mid, int high) {
+        for (int i = 0; i < allSorts.length; i++) {
             helper[i] = allSorts[i];
         }
 
-        Integer i = low;
-        Integer j = mid + 1;
-        Integer k = low;
+        int i = low;
+        int j = mid + 1;
+        int k = low;
+
 
         while (i <= mid && j <= high) {
-
             if (helper[i] < helper[j]) {
                 allSorts[k] = helper[i];
                 i++;
@@ -138,15 +136,16 @@ class MergeSort implements Sort {
 
         while (i <= mid) {
             allSorts[k] = helper[i];
-            k++;
             i++;
+            k++;
         }
 
     }
+
 }
 
-class QuickSort implements Sort {
 
+class QuickSort implements Sort {
 
     @Override
     public Integer[] sort(Integer[] allSorts) {
@@ -154,20 +153,20 @@ class QuickSort implements Sort {
         return allSorts;
     }
 
+    public void sort(Integer[] allSorts, int low, int high) {
+        int i = low;
+        int j = high;
+        int pivot = allSorts[(low + high) / 2];
 
-    public void sort(Integer[] allSorts, Integer low, Integer high) {
-        Integer i = low;
-        Integer j = high;
-
-        Integer mid = allSorts[(low + high) / 2];
 
         while (i <= j) {
 
-            while (allSorts[i] < mid) {
+
+            while (allSorts[i] < pivot) {
                 i++;
             }
 
-            while (allSorts[j] > mid) {
+            while (allSorts[j] > pivot) {
                 j--;
             }
 
@@ -179,38 +178,42 @@ class QuickSort implements Sort {
 
         }
 
-        if (low < j) {
+        if (low < j)
             sort(allSorts, low, j);
-        }
-        if (i < high) {
+
+        if (i < high)
             sort(allSorts, i, high);
-        }
+
 
     }
 
-    public void exchange(Integer[] allSorts, Integer i, Integer j) {
-        Integer temp = allSorts[i];
+    private void exchange(Integer[] allSorts, int i, int j) {
+        int temp = allSorts[i];
         allSorts[i] = allSorts[j];
         allSorts[j] = temp;
     }
+
+
 }
 
 
 class Node {
+    int data;
     Node next;
-    Integer data;
 
-    Node(Integer data) {
+    Node(int data) {
         this.data = data;
     }
 }
 
 class LinkedList {
+
     Node head;
 
-    public static void printlInkedList(LinkedList linkedListPrint) throws CloneNotSupportedException {
+
+    static public void printLinkedListData(LinkedList linkedListTemp) {
         LinkedList linkedList = new LinkedList();
-        linkedList.head = linkedListPrint.head;
+        linkedList.head = linkedListTemp.head;
         while (linkedList.head != null) {
             System.out.print(linkedList.head.data + "->");
             linkedList.head = linkedList.head.next;
@@ -218,28 +221,29 @@ class LinkedList {
         System.out.println();
     }
 
-    public void append(Integer data) {
+
+    //try
+    public void addNode(int data) {
         if (head == null) {
             head = new Node(data);
             return;
         }
 
         Node current = head;
-
         while (current.next != null) {
             current = current.next;
         }
         current.next = new Node(data);
-
     }
 
-    public void prependNode(Integer data) {
+    public void prependNode(int data) {
         Node temp = head;
         head = new Node(data);
         head.next = temp;
     }
 
-    public void deleteNode(Integer data) {
+    public void deleteNode(int data) {
+
         if (head.data == data) {
             head = head.next;
             return;
@@ -254,9 +258,30 @@ class LinkedList {
             current = current.next;
         }
 
+
+    }
+
+}
+
+class Factorial {
+    public int getFactorial(int i) {
+        if (i == 0 || i == 1)
+            return 1;
+        else
+            return i * getFactorial(i - 1);
+    }
+}
+
+class Fibanacii {
+
+    public int fib(int n) {
+        if (n <= 1)
+            return n;
+        return fib(n - 1) + fib(n - 2);
     }
 
 
 }
+
 
 
