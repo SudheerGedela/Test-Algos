@@ -74,3 +74,6 @@ public class TestCollecationsSearches {
     }
 
 }
+
+
+//https://www.mkyong.com/java8/java-8-how-to-sort-a-map/
