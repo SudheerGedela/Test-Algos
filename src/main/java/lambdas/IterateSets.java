@@ -30,7 +30,7 @@ public class IterateSets {
         testSet
                 .stream()
                 .filter(e -> e.contains("1"))
-                .forEach(System.out::print);
+                .forEach(System.out::println);
 
 
 
