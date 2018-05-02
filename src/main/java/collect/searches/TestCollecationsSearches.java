@@ -71,7 +71,19 @@ public class TestCollecationsSearches {
 
         finalMap1.entrySet().forEach(e -> System.out.println(e.getKey() + " <-> " + e.getValue()));
 
+
+        //filtering maps
+        unsortMap.entrySet()
+                .stream()
+                .filter(e -> e.getKey() == "a" ||
+                        e.getKey() == "b" ||
+                        e.getKey() == "z")
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        System.out.println("****************");
+        unsortMap.entrySet().forEach(System.out::println);
+
     }
+
 
 }
 
