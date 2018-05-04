@@ -1,8 +1,12 @@
 package lambdas;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Project: algo-lambdas
@@ -32,7 +36,21 @@ public class IterateSets {
                 .filter(e -> e.contains("1"))
                 .forEach(System.out::println);
 
+        Optional<String> str = testSet.stream().findFirst();
 
+        System.out.println("Optional -> "+str);
+
+
+        Map<Integer,String> hashMap = new HashMap<>();
+        hashMap.put(1,"Vamsi");
+        hashMap.put(2,"Ramani");
+        hashMap.put(3,"Usha");
+
+        Map<Integer,String> newMap = hashMap.entrySet().stream()
+                .filter(p -> p.getValue().equalsIgnoreCase("vamsi"))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        newMap.entrySet().forEach( e -> System.out.println("Key: "+ e.getKey() + ", Value: "+ e.getValue()));
 
     }
 }
